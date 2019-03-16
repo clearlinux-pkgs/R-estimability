@@ -4,19 +4,17 @@
 #
 Name     : R-estimability
 Version  : 1.3
-Release  : 12
+Release  : 13
 URL      : https://cran.r-project.org/src/contrib/estimability_1.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/estimability_1.3.tar.gz
 Summary  : Tools for Assessing Estimability of Linear Predictions
 Group    : Development/Tools
 License  : GPL-3.0
-BuildRequires : clr-R-helpers
+BuildRequires : buildreq-R
 
 %description
-of regression coefficients, and 'epredict' methods that handle 
-  non-estimable cases correctly. Estimability theory is discussed in
-  many linear-models textbooks including Chapter 3 of Monahan, JF (2008), 
-  "A Primer on Linear Models", Chapman and Hall (ISBN 978-1-4200-6201-4).
+R package **estimability**: Support for determining estimability of linear functions
+====
 
 %prep
 %setup -q -c -n estimability
@@ -26,11 +24,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523742478
+export SOURCE_DATE_EPOCH=1552754897
 
 %install
+export SOURCE_DATE_EPOCH=1552754897
 rm -rf %{buildroot}
-export SOURCE_DATE_EPOCH=1523742478
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -65,8 +63,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library estimability|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  estimability || :
 
 
 %files
