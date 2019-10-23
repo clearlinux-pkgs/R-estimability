@@ -4,13 +4,14 @@
 #
 Name     : R-estimability
 Version  : 1.3
-Release  : 20
+Release  : 21
 URL      : https://cran.r-project.org/src/contrib/estimability_1.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/estimability_1.3.tar.gz
 Summary  : Tools for Assessing Estimability of Linear Predictions
 Group    : Development/Tools
 License  : GPL-3.0
 BuildRequires : buildreq-R
+BuildRequires : util-linux
 
 %description
 R package **estimability**: Support for determining estimability of linear functions
@@ -23,13 +24,13 @@ R package **estimability**: Support for determining estimability of linear funct
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552920759
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1571825282
 
 %install
-export SOURCE_DATE_EPOCH=1552920759
+export SOURCE_DATE_EPOCH=1571825282
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -58,12 +59,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  estimability || :
+R CMD check --no-manual --no-examples --no-codoc estimability || :
 
 
 %files
