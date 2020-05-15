@@ -4,36 +4,38 @@
 #
 Name     : R-estimability
 Version  : 1.3
-Release  : 24
+Release  : 25
 URL      : https://cran.r-project.org/src/contrib/estimability_1.3.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/estimability_1.3.tar.gz
 Summary  : Tools for Assessing Estimability of Linear Predictions
 Group    : Development/Tools
 License  : GPL-3.0
 BuildRequires : buildreq-R
-BuildRequires : util-linux
 
 %description
-R package **estimability**: Support for determining estimability of linear functions
-====
+of regression coefficients, and 'epredict' methods that handle 
+  non-estimable cases correctly. Estimability theory is discussed in
+  many linear-models textbooks including Chapter 3 of Monahan, JF (2008), 
+  "A Primer on Linear Models", Chapman and Hall (ISBN 978-1-4200-6201-4).
 
 %prep
 %setup -q -c -n estimability
+cd %{_builddir}/estimability
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1571825282
+export SOURCE_DATE_EPOCH=1589531421
 
 %install
-export SOURCE_DATE_EPOCH=1571825282
+export SOURCE_DATE_EPOCH=1589531421
 rm -rf %{buildroot}
 export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
-export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
+export FCFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
+export FFLAGS="$FFLAGS -O3 -flto -fno-semantic-interposition "
 export CXXFLAGS="$CXXFLAGS -O3 -flto -fno-semantic-interposition "
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
