@@ -7,7 +7,7 @@
 #
 Name     : R-estimability
 Version  : 1.5
-Release  : 50
+Release  : 51
 URL      : https://cran.r-project.org/src/contrib/estimability_1.5.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/estimability_1.5.tar.gz
 Summary  : Tools for Assessing Estimability of Linear Predictions
